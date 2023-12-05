@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Yu KaiCheng">
+
+
+
+
+
+<title>TRUST公司线性功放TA-115研究 | D.Eng YKC&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            /*if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+            */
+            pagebody.classList.add('dark-theme');
+            document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">D.Eng YKC&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">D.Eng YKC&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">TRUST公司线性功放TA-115研究</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Yu KaiCheng</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 5, 2023&nbsp;&nbsp;18:03:47</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>​		<font face="Times New Roman">Trust Automation has over 30 years of experience in custom motors, linear drives, digital drives and systems which meet the unique needs of its customers. Its product line includes motors, linear drives, digital drives, custom assemblies and products to fit unique applications and ground-up system design and manufacturing solutions.</font></p>
+<p>​		<span style="background-color: #404040;"><font face="Times New Roman">Trust Automation</font><font face="楷体">在满足客户独特需求的定制电机、线性驱动器、数字驱动器和系统方面拥有30多年的经验。其产品线包括电机、线性驱动器、数字驱动器、定制组件和产品，以适应独特的应用和接地系统设计和制造解决方案。</font></span></p>
+<p><img src="/2023/12/05/TRUST-TA115/1.png" alt="1"></p>
+<center><a target="_blank" rel="noopener" href="https://www.trustautomation.com/">Trust Automation Inc.</a></center>
+
+<p>​		<span style="font-size: 15px;  font-weight: bold;"><font face="楷体">机缘巧合之下得到一台TA-115线性驱动器，基于学习的角度对其功能实现方案进行研究</font></span></p>
+<img src="/2023/12/05/TRUST-TA115/3.png" alt="1" style="zoom:50%;">
+
+<center><a target="_blank" rel="noopener" href="https://www.trustautomation.com/products/linear-drives/ta115-linear-drive">www.trustautomation.com/TA115</a></center>
+
+<p>​		<span style="font-size: 15px;  font-weight: bold;"><font face="楷体">官网介绍：</font></span></p>
+<p>​		<font face="Times New Roman">The Trust Automation TA115 Linear Drive is a linear servo motor amplifier designed to drive a brush motor with up to 340W of power. The TA115 is an excellent solution for voice coil type motors, high precision positioning applications and systems requiring ultra quiet driving power where low noise operation is essential. The TA115 can be operated in voltage (velocity) mode or current (torque) mode, selected via user accessible DIP switch. Fault logic level is also selectable via DIP switch.</font></p>
+<p>​		<span style="background-color: #404040;"><font face="Times New Roman">Trust Automation TA115</font><font face="楷体">线性驱动器是一款线性伺服电机放大器，设计用于驱动功率高达</font><font face="Times New Roman">340W</font><font face="楷体">的刷电机。</font><font face="Times New Roman">TA115</font><font face="楷体">是音圈式电机、高精度定位应用和需要超静音驱动功率的系统的绝佳解决方案，其中低噪声操作至关重要。</font><font face="Times New Roman">TA115</font><font face="楷体">可以在电压（速度）模式或电流（扭矩）模式下操作，通过用户可访问的</font><font face="Times New Roman">DIP</font><font face="楷体">开关进行选择。故障逻辑电平也可通过</font><font face="Times New Roman">DIP</font><font face="楷体">开关选择。</font></span></p>
+<hr>
+
+<table>
+<thead>
+<tr>
+<th align="center"><span style="font-size: 20px; font-family: 'Times New Roman'; font-weight: bold;">Basic Parameters</span></th>
+<th align="center"><span style="font-size: 20px; font-family: '楷体'; font-weight: bold;">基础参数</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Voltage (DC) : 24-48V ( 20V abs min, 52V abs max )</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">供电直流电压：24-48V （最低20V，最高52V）</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Equivalent Motor Voltage: ±43V</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">等效电机电压：±43V</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Command Input: ±10V ( ±12V max )</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">指令电压输入：±10V （最高±12V）</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Current (Peak) : 8A</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">输出峰值电流：8A</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Torque Gain : 0.2A&#x2F;V to 0.8A&#x2F;V</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">扭矩增益：0.2A&#x2F;V 至 0.8A&#x2F;V</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Bandwidth : 10kHz</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">带宽：5kHz</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 20px; font-family: 'Times New Roman'; font-weight: bold;">Technical Advantages</span></td>
+<td align="center"><span style="font-size: 20px; font-family: '楷体'; font-weight: bold;">技术优势</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Digital on-the-fly gain control (DTS)</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">数字动态增益控制</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Over-temperature protection</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">过温保护</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">170W continuous &#x2F; 340W peak</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">170W持续功率 &#x2F; 340W峰值功率</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Integral forced-air cooling</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">整体强制空气冷却</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Very low electrical noise</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">非常低的电噪声</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Selectable current limit</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">可选择的电流限制</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 20px; font-family: 'Times New Roman'; font-weight: bold;">Application</span></td>
+<td align="center"><span style="font-size: 20px; font-family: '楷体'; font-weight: bold;">应用场景</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Voice coil motors</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">音圈电机</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Small DC motors</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">小型直流电机</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">X-Y micro stages</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">X-Y微型载物台</span></td>
+</tr>
+<tr>
+<td align="center"><span style="font-size: 15px; font-family: 'Times New Roman'; ">Optics positioning</span></td>
+<td align="center"><span style="font-size: 15px; font-family: '楷体'; ">光学定位</span></td>
+</tr>
+</tbody></table>
+<p><span style="font-size: 15px;  font-weight: bold;"><font face="楷体">数据手册： </font></span><a href="TA115DataSheet.pdf">TA115DataSheet.pdf</a> </p>
+<img src="/2023/12/05/TRUST-TA115/4.png" alt="1" style="zoom:50%;">
+
+<p>​		<font face="楷体">作为线性驱动器，基于其采用的功放结构导致其效率较低，数据手册中并未给出其相关的效率参数，此为其中提到的低噪性能同样也缺乏性能表征的参数，通常我们使用信噪比，失真度等表示其输出性能</font></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Yu KaiCheng</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://dengykc.github.io/2023/12/05/TRUST-TA115/">https://dengykc.github.io/2023/12/05/TRUST-TA115/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2023/12/05/Power-Amplifier-Books/">功率放大器丛书 / Power Amplifier Books</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Yu KaiCheng </span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
