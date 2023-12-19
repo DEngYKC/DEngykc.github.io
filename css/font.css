@@ -1,7 +1,12 @@
 @font-face {
-  font-family: 'lanting';
-  src: url("../fonts/lanting/lanting.eot"); /* IE9 */
-  src: url("../fonts/lanting/lanting.eot?#iefix") format('embedded-opentype'), /* IE6-IE8 */ url("../fonts/lanting/lanting.woff2") format('woff2'), url("../fonts/lanting/lanting.woff") format('woff'), url("../fonts/lanting/lanting.ttf") format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  font-family: '王羲之书法字体';
+  src: url("../fonts/own/王羲之书法字体.ttf");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: '楷体';
+  src: url("../fonts/own/simkai.ttf");
   font-weight: 300;
   font-display: swap;
 }
