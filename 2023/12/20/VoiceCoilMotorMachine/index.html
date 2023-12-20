@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Yu KaiCheng">
+
+
+
+
+
+<title>音圈电机直线机台设计 | D.Eng YKC&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            /*if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+            */
+            pagebody.classList.add('dark-theme');
+            document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">D.Eng YKC&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">博文</a>
+                
+                    <a class="menu-item" href="/categories">类别</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/aboutme">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">D.Eng YKC&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">博文</a>
+                
+                    <a class="menu-item" href="/categories">类别</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/aboutme">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">音圈电机直线机台设计</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Yu KaiCheng</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 20, 2023&nbsp;&nbsp;11:30:15</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E7%94%B5%E6%9C%BA%E6%9C%BA%E5%8F%B0/">电机机台</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><span style="font-size: 20px; "><font face="楷体">音圈电机是一种特殊的直接驱动式电机，具有体积小、高速、高加速度和响应快等特性，常见的音圈电机机台配合音圈电机可以实现cm，mm级别的运动行程，um级别的定位精度。本次设计制作了一款低成本的音圈电机台，能够满足最基本的音圈电机运动控制的学习调试与验证。</font></span></p>
+<div style="display: flex; justify-content: center; align-items: center;">     
+    <img src="/2023/12/20/VoiceCoilMotorMachine/1.jpg" alt="Image 1" style="width: 40%; height: auto; margin-right: 10px;">     
+    <img src="/2023/12/20/VoiceCoilMotorMachine/2.png" alt="Image 2" style="width: 58%; height: auto; margin-left: 10px;"> 
+</div>
+
+<center><a target="_blank" rel="noopener" href="http://www.tmmor.com/">同茂电机</a></center>
+
+<div style="display: flex; justify-content: center; align-items: center;">     
+    <img src="/2023/12/20/VoiceCoilMotorMachine/2.jpg" alt="Image 1" style="width: 50%; height: auto; margin-right: 10px;">     
+    <img src="/2023/12/20/VoiceCoilMotorMachine/3.jpg" alt="Image 2" style="width: 50%; height: auto; margin-left: 10px;"> 
+</div>
+
+<center><a target="_blank" rel="noopener" href="http://cn.accel-tec.com">苏州美新精密电机</a></center>
+
+<div style="display: flex; justify-content: center; align-items: center;">         <img src="/2023/12/20/VoiceCoilMotorMachine/4.jpg" alt="Image 1" style="width: 50%; height: auto; margin-right: 10px;">         <img src="/2023/12/20/VoiceCoilMotorMachine/5.jpg" alt="Image 2" style="width: 50%; height: auto; margin-left: 10px;"> </div>
+
+<center><a target="_blank" rel="noopener" href="http://cn.accel-tec.com">雅科贝思</a></center>
+
+<div style="display: flex; justify-content: center; align-items: center;">         <img src="/2023/12/20/VoiceCoilMotorMachine/6.jpg" alt="Image 1" style="width: 50%; height: auto; margin-right: 10px;">         <img src="/2023/12/20/VoiceCoilMotorMachine/7.jpg" alt="Image 2" style="width: 50%; height: auto; margin-left: 10px;"> </div>
+
+<center><a target="_blank" rel="noopener" href="https://www.h2wtech.com/">H2W Technologies, Inc</a></center>
+
+<p><span style="font-size: 20px; "><font face="楷体">首先，我们给出多种单自由度音圈电机直线机台的现有方案（如有侵权请联系我删除），音圈电机就其运动原理通常可以采用两种不同的运动台连接方式，分别是音圈驱动和磁桶驱动，目前市面上多数产品采用音圈驱动，因为其运动学模型建立过程中无线圈-磁通的力学转换过程，驱动力更纯粹，本次设计同样也采用该种方式。</font></span></p>
+<img src="/2023/12/20/VoiceCoilMotorMachine/6.png" alt="1" style="zoom:100%;">
+
+<center><a target="_blank" rel="noopener" href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.67002e8dVHaiQ1&id=626572843036&_u=k207o0s3s2883f">淘宝店铺：优瑞步进电机商行</a></center>
+
+<div style="display: flex; justify-content: center; align-items: center;">         <img src="/2023/12/20/VoiceCoilMotorMachine/7.png" alt="Image 1" style="width: 50%; height: auto; margin-right: 10px;">         <img src="/2023/12/20/VoiceCoilMotorMachine/8.png" alt="Image 2" style="width: 50%; height: auto; margin-left: 10px;"> </div>
+
+<center><a target="_blank" rel="noopener" href="https://detail.tmall.com/item.htm?_u=k207o0s3s27553&id=616499981866&skuId=4552349867632&spm=a1z09.2.0.0.67002e8dVHaiQ1">天猫店铺：林邓旗舰店</a></center>
+
+<p><span style="font-size: 20px; "><font face="楷体">核心零件音圈电机与直线导轨采用购买的方式，考虑到成本限制，购买的小型音圈电机低电压低功率，成本控制在100-200元之间，导轨成本在50元左右，本次设计采用的导轨过长过宽，后续方案需要重新考虑尺寸。</font></span></p>
+<div style="display: flex; justify-content: space-between; align-items: center;">     
+    <img src="/2023/12/20/VoiceCoilMotorMachine/1.1.png" alt="Image 1" style="width: 25%; height: auto; margin-right: 5px;">     
+    <img src="/2023/12/20/VoiceCoilMotorMachine/1.2.png" alt="Image 2" style="width: 25%; height: auto; margin-left: 5px;"> 
+    <img src="/2023/12/20/VoiceCoilMotorMachine/1.3.png" alt="Image 3" style="width: 25%; height: auto; margin-right: 5px;">     
+    <img src="/2023/12/20/VoiceCoilMotorMachine/1.4.png" alt="Image 4" style="width: 25%; height: auto; margin-left: 5px;"> 
+</div>
+
+<p>
+
+<div style="display: flex; justify-content: space-between; align-items: center;">     
+    <img src="/2023/12/20/VoiceCoilMotorMachine/1.5.png" alt="Image 1" style="width: 33%; height: auto; margin-right: 5px;">     
+    <img src="/2023/12/20/VoiceCoilMotorMachine/1.6.png" alt="Image 2" style="width: 33%; height: auto; margin-left: 5px;"> 
+    <img src="/2023/12/20/VoiceCoilMotorMachine/1.7.png" alt="Image 3" style="width: 33%; height: auto; margin-right: 5px;">     
+</div>
+
+</p><p>
+
+<div style="display: flex; justify-content: center; align-items: center;">         <img src="/2023/12/20/VoiceCoilMotorMachine/1.9.png" alt="Image 1" style="width: 49%; height: auto; margin-right: 10px;">         <img src="/2023/12/20/VoiceCoilMotorMachine/1.10.png" alt="Image 2" style="width: 49%; height: auto; margin-left: 10px;"> </div>
+
+</p><p><span style="font-size: 20px;  font-weight: bold;"><font face="楷体">建模文件（SolidWorks软件）： </font></span>  <a href="%E9%9F%B3%E5%9C%88%E5%8F%B0.zip">音圈台.zip</a> </p>
+<p><span style="font-size: 20px; "><font face="楷体">利用SolidWorks分别对线圈，磁桶，滑块，导轨进行建模，设计底座，磁桶连接件和线圈连接件。最后进行组装，由于通常高精密设备均会搭载光学实验平台，故底座采用光学精密平台常用的M6螺孔，方便后续安装。由于3D打印件螺纹不好制作，需要固定的螺孔（磁桶台与底板，导轨与底板）我们设计的成小一号尺寸，采用自攻螺丝固定。贯通孔则正常M3（线圈台与滑块）与M6（底板与光学精密平台）尺寸即可。</font></span></p>
+<img src="/2023/12/20/VoiceCoilMotorMachine/10.png" alt="1" style="zoom:100%;">
+
+<p>
+
+<div style="display: flex; justify-content: center; align-items: center;">         <img src="/2023/12/20/VoiceCoilMotorMachine/11.png" alt="Image 1" style="width: 49%; height: auto; margin-right: 10px;">         <img src="/2023/12/20/VoiceCoilMotorMachine/12.png" alt="Image 2" style="width: 49%; height: auto; margin-left: 10px;"> </div>
+
+</p><p><span style="font-size: 20px; "><font face="楷体">采用嘉立创三维猴3D打印平台打样，材料选择最便宜的盲盒树脂-X树脂，最后三件成本只需要25元，特别需要注意的是由于设计问题，线圈台和磁桶台有壁厚较薄的地方，此处异常我们选择接受即可，不影响后续的使用，下一版设计将改进该问题。</font></span></p>
+<div style="display: flex; justify-content: center; align-items: center;">         <img src="/2023/12/20/VoiceCoilMotorMachine/8.jpg" alt="Image 1" style="width: 49%; height: auto; margin-right: 10px;">         <img src="/2023/12/20/VoiceCoilMotorMachine/9.jpg" alt="Image 2" style="width: 49%; height: auto; margin-left: 10px;"> </div>
+
+<p><span style="font-size: 20px; "><font face="楷体">组装完成品如上，采用M6，M3普通螺丝与M4自攻螺丝进行固定，另外加入三块金属块作为限位使用，防止电机撞击或飞出，此处最好设计成硅胶块，后续方案将考虑该处改进。此外采用的15cm*15cm光学精密平板与机台尺寸不匹配，由于音圈电机的运动行程较短，本次采用的导轨尺寸过长，导致冗余部分过多，后续方案将改进尺寸，减小横向长度。</font></span></p>
+<p><span style="font-size: 20px; "><font face="楷体">至此简易电机台已经搭建完毕，目前方案成本控制在300元以内，后续方案改进将减小导轨尺寸，滑块尺寸，增加硅胶限位垫，综合成本将控制在300以内。</font></span></p>
+<img src="/2023/12/20/VoiceCoilMotorMachine/10.jpg" alt="1" style="zoom:100%;">
+
+<p><span style="font-size: 20px; "><font face="楷体">作为一个控制系统，开环控制面临着多种问题，无法实现高精度的位移控制，之前给出的现有方案多数采用磁栅尺或光栅尺作为位置传感器，反馈得到位置信息，然而高精度位移传感器成本巨大，上图采用的是基恩士EX-110V接近式传感器，利用霍尔的原理，故需要加装铁片使用。该方案同样面临着成本问题（该传感器为目前实验室闲置，故直接拿来使用作为位置反馈）。低成本的位移传感器，重复定位精度低，目前有两种方案，分别是小型磁栅尺与接触式位移传感器，后续我们将进行位移传感器的选择和加装，目标实现低成本，um级别的音圈电机台的方案。</font></span></p>
+<p><span style="font-size: 20px;  font-weight: bold;"><font face="楷体">总结： </font></span> </p>
+<p><span style="font-size: 20px; "><font face="楷体">本次设计完成开环形式的音圈单机直线机台的设计，能够实现直线运动，然后仍存在几点问题需要在后续方案中改进：<br>1.导轨与滑块与电机尺寸不匹配，后续选用较小的滑块与导轨，并减小整体长度。<br>2.修改磁桶台和线圈台，避免出现壁厚过小的问题。<br>3.磁桶台和线圈台与磁桶和线圈连接用的螺丝应采用无磁性螺丝，避免被磁化影响运动控制。<br>4.增加限位硅胶块，设计硅胶块放置方案，实现行程可调（视电机最大行程和传感器有效行程而定）。<br>5.选择合适的位移传感器，进行位移信息反馈，完善控制系统。<br>6.选择合适的力传感器，进行推力信息反馈，完善控制系统。<br>7.考虑采用强度更高且成本不高的材料制作机台结构<br></font></span></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Yu KaiCheng</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://dengykc.github.io/2023/12/20/VoiceCoilMotorMachine/">https://dengykc.github.io/2023/12/20/VoiceCoilMotorMachine/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E9%9F%B3%E5%9C%88%E7%94%B5%E6%9C%BA/"># 音圈电机</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2023/12/18/%E5%9F%BA%E4%BA%8EOPA548F%E7%BA%BF%E6%80%A7%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8%E8%AE%BE%E8%AE%A1/">基于OPA548线性功率放大器设计</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Yu KaiCheng </span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
