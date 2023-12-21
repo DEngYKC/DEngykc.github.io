@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Yu KaiCheng">
+
+
+
+
+
+<title>D-ClassPA-PID | D.Eng YKC&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            /*if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+            */
+            pagebody.classList.add('dark-theme');
+            document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">D.Eng YKC&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">博文</a>
+                
+                    <a class="menu-item" href="/categories">类别</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/aboutme">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">D.Eng YKC&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">博文</a>
+                
+                    <a class="menu-item" href="/categories">类别</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/aboutme">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">D-ClassPA-PID</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Yu KaiCheng</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 21, 2023&nbsp;&nbsp;15:22:08</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E7%94%B5%E6%9C%BA%E9%A9%B1%E5%8A%A8/">电机驱动</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="9c9a97caf87d88fcba438ff6b4542b7632e08cd5f19320428fb178dbb9d25f34">4630436162ade97ba2718b7d0c4b3b630904c10168e269b630e0ea7dabb1c31f3359976123349adf0b3e854ebb9eecafabc6367f9e4293266b47fc5322eaf44b7ef36f9e2d1a892ee8933f7e9245639728fe7de379af455cb6014cef5fd7c16fead761ae85f8fea9a5c57de152161573c0791665e178edc51699c0a06df18b62703091a6baef2cd35c4299d5c61bc4d719767fa1b9fcf152ffb0afb1bbeef490148554e203451b2455c655242244fc31f2b0aaaa73bb8c34a1d2d8883c3b703ae6c780aa6fef0a416c2634ec4e0bdf309c36a62fca11763bcc9da8c72632907920b2f93a96d7f00f576e29c00e2dd58e348ab3dd663bcf8e90c77f0343ab229bbaff7dcf79a651ee07f2cc0da32e1b91b3d62594aeda0603e22ece1267aca0facc1119c3403520e80b639ddef84e7d836d4bf50d1022f18c4541dabd9707890585ee473d65cf76c9b0d2092bdc4b29c563fc440f16a789ae2c82d8340781dc8992882c904113228a772259c03d352c8a8464cab41ab42fe9ca7e569019229873fa76679b79af30e2d17b7ba7f6e131d8dfde16de18919d39e26efab21c1ab0dc37348eca002d40b87577da696ee0482c8b0fb3f93419cba100eedfce9413e981943a32ae51c1a937e88ba93b866b48704deb54739582eccfaf1fe5f4fe5e5921b345db5ae7e691417c2c18d8592b152313f4877cac9af41ed968a181a3638804323bc901ddbd7fbd99e2c74ff622d9458a680a9d23496247a2395ea87325564c2111ca7b0c939dae0ddc394efa1ef7582be163a4463575c80ec9d1b60e8bfa909ae83f2ecf5b3ee25a2bcb88f06ca24d40e04be3c9889e0d83917663f7c697994df54c9ff4610c436ab1734f18e577f06c7e90037457ef03919ba43b32d50d801f93605e1eeca8fce6f5e22d98a81f5741bbec6147bb7eebdb62528be863842148dfc062ed557d58f91f920427efc4175c6dc1c69fd330a0191746e76c937fe0582eddc1d3db6a1e26e19b3e8b0888ef2405701b8b392ce242519df83ba7b1d534a875446af2971acb4875714dd62ae781e70a97615549797d98143e92372637b7d46575e3a561ab87859e9841ae0b5bd01584bd33dc965e1feb50b5898cf4fbebbd064d61f5287742555ec810c8794ccd0538a6b8ae12783521a2177a55a3d7057d5a63bda2a91d915309eaefcca8909bef31b6a00a5a173563a16de7b8d012ac9ad8360cc70ae14f6adc1d65dda68ce74f23a6d64b2153b2199165afb6a21a9bc92f9a36d09217ad0d6f60b2c53bba9709efa288af2d0a5af5fcafad8202353b13082fb2fd8ab8a75a979d2c8954b0158041645531c8018723bb852037930c3d45e2004c4f7f536fbb103d54a418a57d4e206981313bcd3d2ec61cd8c7489b6a34628a840a11e199109be23159f5dd706cfeb62b44b6648141fd0f44871f301d91fc6a3544977c012890a57dfe6377f67e73c7574c81861a63c633226cf50c3c7b9ce92b87bf35fa8c8138da18f8b7819328fbbbde8b35e8777275c5fe8460a27250acea1f5fe9fa83122c739210cacfea44f87fefb8abc4346c0d6ee686ed4d25f4b14a7efa8ea3b429ffc3820bc2c799d6c616dadab8a36b1f1fa5dea868712f73489744898610293170cab0265d4c41333bcc6dc69f5e9f9201f133b67f1e85b483f03e75908a94807d93c6b3ac92963f3e1f2fd6b3f20a7cfb6876faff069bb75097194e93615eb57ad3dc9e7ef9c48bd91589daa0128347c7ecb77b7cbc5cf55e6c76786790c103a0e868d2ce86f17f60b00e628b70459607eb5cab745028891219e9f5bf78c6272501ca1315a297f82d998fc07f511ab1d7a9bd07f274dbf94fbe3e7d0f10479e18d9a0f2ce884d70c6a0c01b7365dbc70430ccb9685b4e0395c60cc118c9ffcd4f6f8d2d0edf1af726633a4b22e9ced524f1e07853894344a8cb0d6e4b09bdab39775248397018242652a7580278aa976a3fd0424bfb67dc0becbda8c7c77bfda3e3ac60a1fbe9e31cd6a55cdcaef2a43ef02dca023ecdcea3d5f48259384d66273f376d8987c288f50b9966b4d5be5b1373b8c12015d0fd896341a73c2ebc70bee16f4d81eb4486764caa966f20404f6d6b29e622b5930aea7863c7be45911af8e9f84ddeb7ab5cc9033aee652c88ad7c527a0c144d59bbf6edf95f1d5f371f4ce363227dd4f95de1b56270248684ee6b3b0a666bda4a98f9b49dffa1e508178716bbc8099c394b4b0d03f41fb49e3e9e5a163951bb4f55a0a166df9b20847860ba3816d3ded5912387e52aa4429d90a7cc52052a65f2dd68a4ba081c7cb219a75c238e17282ae964bc41b0ae6ed29a036a5ea6c8939136e8208b7ca2b794017fcafd29248f23587a63a81693634104473b969bddf6e6ea13804f109a936baa1ee140cfffb187b72c0c398d136cfe312e2be24410261a25bd9bd3dfc8d712e54248904356f7e4bb1760c997399b883940e8c044482eb51da242d3fb4d4beede82b87c3e7235f12c97ce48ad5ec0b9a44be2dbe7f2ffa6d7306a9c0ebfca725249bf55a69372f684244715c29b0c606a30b2acc533c53881e0606c3d850f3c9bb373fb16bec271bfde9b94a34171ff372a38ba448d773300820ec5d9cc21510395a17551c26e9e96e3d06ba804e83fd93e1feea9c879fd6d73d53496eb5a39c914b511bd550f7acc07734393a8cb6c127cc19dbf07b24f76d51ae87b63ce656969ca6e224bbf1c89dddd90795e714b1647ce649fd6057dc1b7b2ffa5daccb3e828905f7c2cf018299d55ebfc8e3a8346e11bd9067c2e279cf5f9580f36a6f78c3020fe86a13d21cfba53e52d488a72896f5cb77c6f052d4f2eb7b38bd5654e9029e5b3bd5dd113ed07c055097e736cb13187b4589e753c851f1fa808a5bc455a61a417ac5747458f88cd22c125af3d661a8a6ab007916753d520b94fdf4ce6d43c67a0cb12fc7f4087e73ef30174b56c8568899b9941e16797d039860905ff1b35354184fbeeb7327dc1dc543cc8b646291f3ed1687236f956b7811f06b97532f5f53f8b53cf7af27d7ada2bb6f2e12032a7f749c34049d0798f0c57e62d9df47c381626084c1a7dbed26c889f266eb2533a7075aac077de35e6cdc160329907e63ab6a13075212aba285a6f37cc3806551095b3a29a119a4495386b80d9e9564b12dd7c1ea22c558157332890902c66ff2e4243a910cfca51816e2c056d61d90641b6ef0f9f9086bdc64d8eeb472b5c037878aa92a453eab5232115b968859803277773b6048e7fc7bf8ee7545bb3a09eb5334e3a01bc7c26622663c334cc56ded8caac3fb90a3744dfdd6a05b0c8c8ebe398ac61f9b4c0889cf5a6f52ddd6ccab1f91cd88e5565a2cc5ed0c829cbc08a8dbff41864e83df905b450ef2c9229b188d88fe42e3cb18dcc18586fcaba8b7a3ebdc8103d62aad69f36b5030d53f36b73c9ceb68a5d8714aab96511541d17c5c6f336a8fd657025400a4aa96eb2cdc19760a7f4398528e4ea56d14884f569bb6377173611af84a4937dc04266731eb84b01e721029d95969b27d16551e4ce79e913c3ff972ce1522387ee4a41d7efca1fa662b20b13a2500144150ea2910e3068818d124c294766bcc833e3485e95f81a5ad94a63210b4ca6460812cdf47f130015c0b1ff2f89e63dfbe0fb97b23619002dd49bdfccf08163b6a900e75bedff6e1f40a17260d65b14f087f22219901f664e64bc751f47c3c3d6fcdff21497b35a8891bb6e5048f748c29c8521b9254ad6bc42fae9afbde84d7eaca9378a1f06da8d1582a445d6cd355811ad4fe823936ff067a80fade2be8622fa760ce3992816fca9837ed6a8c59c95a8505d8ee7c97be2471a1c5b4a51959d97e2e21801a711b84bf41212bd706fab5c9a9da51ddb67dbb4597aa90024d21e6ddf90bfec5593abd163d52b2957aae120d3b8359763f3e1bfb97f70ac982fd90a72618ee5414d59e80029d3fffc29f75436867eab636ff37774f7e5f8afc32a28b60c5073b74b36624b9b6d391f3f565fd75a8d4b38ecf879eed500e579735799d7583a6838ff9b220b0198919197330e10c286892062f9d39e</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Yu KaiCheng</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://dengykc.github.io/2023/12/21/D-ClassPA-PID/">https://dengykc.github.io/2023/12/21/D-ClassPA-PID/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/"># 功率放大器</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2023/12/20/VoiceCoilMotorMachine/">音圈电机直线机台设计</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Yu KaiCheng </span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
