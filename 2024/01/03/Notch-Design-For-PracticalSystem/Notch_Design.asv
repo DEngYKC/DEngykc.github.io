@@ -1,0 +1,341 @@
+clear all;
+close all;
+clc;
+
+FreLimMin=30;
+FreLimMax=950;
+
+op = bodeoptions;
+op.FreqUnits = 'Hz';
+
+k0 = 29.5;
+m=1350;
+k=1.7747e7;
+c=1.6434e5;
+Gp_Ideal=tf([1 0 0],[m c k])*k0;
+
+load('Test3.mat');
+f = FreqTxy(:,1);
+w = 2*pi*f;
+Gp_Practical = FreqTxy(:,1+3); 
+Gp_Practical = frd(Gp_Practical,w);
+
+figure(1)
+bode(Gp_Ideal,op);
+hold on
+bode(Gp_Practical,op);
+hold off
+
+x=Gp_Practical.Frequency;
+Range=find(x>=2*pi*FreLimMin & x<=2*pi*FreLimMax);
+x=Gp_Practical.Frequency(Range);
+
+y_practical=Gp_Practical.ResponseData;
+y_practical=Gp_Practical.ResponseData(Range);
+
+[mag,phase,wout]=bode(Gp_Ideal,x);
+y_practical=abs(y_practical(:));
+y_ideal=mag(:);
+
+y_temp=log10(y_practical);
+num=size(x);
+numx=size(x);
+y_diff_temp=zeros(num);
+for i = 2:num-1
+    y_diff_temp(i)=(y_temp(i+1)-y_temp(i-1))/(x(i+1)-x(i-1));
+end
+x_diff=x(2:end-1);
+y_diff=y_diff_temp(2:end-1);
+
+figure(2);
+subplot(2,1,1);
+loglog(x,y_practical);
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+grid on
+subplot(2,1,2);
+semilogx(x_diff,y_diff);
+grid on
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+
+
+smoothnum=1000;
+y_practical_smooth=smoothdata(abs(Gp_Practical.ResponseData(:)),"gaussian",smoothnum);
+y_practical_smooth=y_practical_smooth(Range);
+
+y_temp=log10(y_practical_smooth);
+num=size(x);
+y_diff_temp=zeros(num);
+for i = 2:num-1
+    y_diff_temp(i)=(y_temp(i+1)-y_temp(i-1))/(x(i+1)-x(i-1));
+end
+x_diff=x(2:end-1);
+y_diff=y_diff_temp(2:end-1);
+
+figure(3);
+subplot(2,1,1);
+loglog(x,y_practical_smooth);
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+grid on
+subplot(2,1,2);
+semilogx(x_diff,y_diff);
+grid on
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+
+MaxPeakNumbers=30;
+Tolerance=0.001;
+Distance=800;
+
+y_diff_smooth=smoothdata(y_diff,'gaussian',smoothnum);
+num=size(x_diff);
+peak_frequency=find(y_diff_smooth<=0+Tolerance & y_diff_smooth>=0-Tolerance);
+while(size(peak_frequency,1)>MaxPeakNumbers)
+    Tolerance=Tolerance/sqrt(2);
+    i=1;
+    j=1;
+    peak_frequency=zeros(1,1);
+    while(i<=num(1))
+        if(y_diff_smooth(i)<=0+Tolerance && y_diff_smooth(i)>=0-Tolerance)
+            peak_frequency(j,:)=i;
+            j=j+1;
+            i=i+Distance;
+        else
+            i=i+1;
+        end
+    end
+end
+
+figure(4)
+subplot(2,1,1)
+loglog(x,y_practical);
+grid on
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+hold on
+plot(x(peak_frequency),y_practical(peak_frequency),'r.','MarkerSize',12)
+hold off
+subplot(2,1,2)
+semilogx(x_diff,y_diff_smooth);
+grid on
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+hold on
+plot(x_diff(peak_frequency),y_diff_smooth(peak_frequency),'r.','MarkerSize',12)
+hold off
+
+j=1;
+k=1;
+num=size(peak_frequency);
+localmax_frequency=zeros(1,1);
+localmin_frequency=zeros(1,1);
+Distance=Distance*0.1;
+
+for i=1:num(1)
+    if(peak_frequency(i)-Distance>0 && peak_frequency(i)+Distance<numx(1))
+        if(y_diff_smooth(peak_frequency(i)-Distance)>0 && y_diff_smooth(peak_frequency(i)+Distance)<0)
+            localmax_frequency(j,:)=peak_frequency(i);
+            j=j+1;
+        elseif(y_diff_smooth(peak_frequency(i)-Distance)<0 && y_diff_smooth(peak_frequency(i)+Distance)>0)
+            localmin_frequency(k,:)=peak_frequency(i);
+            k=k+1;
+        end
+    end
+end
+
+figure(5)
+subplot(3,1,1)
+semilogx(x_diff,y_diff_smooth);
+grid on
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+hold on
+plot(x_diff(peak_frequency),y_diff_smooth(peak_frequency),'r.','MarkerSize',12)
+hold off
+subplot(3,1,2)
+semilogx(x_diff,y_diff_smooth);
+grid on
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+hold on
+plot(x_diff(localmax_frequency),y_diff_smooth(localmax_frequency),'b.','MarkerSize',12)
+plot(x_diff(localmin_frequency),y_diff_smooth(localmin_frequency),'g.','MarkerSize',12)
+hold off
+subplot(3,1,3)
+loglog(x,y_practical);
+grid on
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+hold on
+plot(x(localmax_frequency),y_practical(localmax_frequency),'b.','MarkerSize',12)
+plot(x(localmin_frequency),y_practical(localmin_frequency),'g.','MarkerSize',12)
+hold off
+
+Filternumbers=8;
+
+PeakAmplitude=y_practical(localmax_frequency);
+AmplitudeOrder=sort(PeakAmplitude,'descend');
+FilterFrequencyPoint=zeros(1,1);
+for i=1:Filternumbers
+    FilterFrequencyPoint(i,:)=localmax_frequency(PeakAmplitude==AmplitudeOrder(i));
+end
+
+figure(6)
+loglog(x,y_practical);
+grid on
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+hold on
+plot(x(FilterFrequencyPoint),y_practical(FilterFrequencyPoint),'r.','MarkerSize',12)
+hold off
+
+y_temp=y_practical;
+Gp_temp=Gp_Practical;
+Gnotch=tf(1);
+sigma2=0.01;
+for i=1:Filternumbers
+    Gpmin=y_ideal(FilterFrequencyPoint(i))/y_temp(FilterFrequencyPoint(i));
+    sigma1=sigma2/Gpmin;
+    wn=x(FilterFrequencyPoint(i));
+    Gnotch=Gnotch*tf([1 2*sigma2*wn wn^2],[1 2*sigma1*wn wn^2]);
+    Gp_temp=Gp_Practical*Gnotch;
+    [mag,phase,wout]=bode(Gp_temp,x);
+    y_temp=mag(:);
+end
+y_practical_notch=y_temp;
+Gp_Practical_notch=Gp_temp;
+
+figure(7)
+subplot(2,1,1)
+loglog(x,y_practical);
+grid on
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+hold on
+loglog(x,y_ideal);
+loglog(x,y_practical_notch);
+plot(x(FilterFrequencyPoint),y_practical(FilterFrequencyPoint),'r.','MarkerSize',12)
+plot(x(FilterFrequencyPoint),y_practical_notch(FilterFrequencyPoint),'b.','MarkerSize',12)
+hold off
+subplot(2,1,2)
+bode(Gnotch,op)
+grid on
+xlim([FreLimMin,FreLimMax]);
+
+
+ZeroPointnumbers=6;
+
+PeakAmplitude=y_practical_notch(localmin_frequency);
+AmplitudeOrder=sort(PeakAmplitude,'ascend');
+ZeroPointFrequencyPoint=zeros(1,1);
+for i=1:ZeroPointnumbers
+    ZeroPointFrequencyPoint(i,:)=localmin_frequency(PeakAmplitude==AmplitudeOrder(i));
+end
+
+figure(8)
+loglog(x,y_practical_notch);
+grid on
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+hold on
+plot(x(ZeroPointFrequencyPoint),y_practical_notch(ZeroPointFrequencyPoint),'r.','MarkerSize',12)
+hold off
+
+y_temp=y_practical_notch;
+Gp_temp=Gp_Practical_notch;
+Gzero=tf(1);
+sigma2=0.01;
+for i=1:ZeroPointnumbers
+    Gpmin=y_ideal(ZeroPointFrequencyPoint(i))/y_temp(ZeroPointFrequencyPoint(i));
+    sigma1=sigma2/Gpmin;
+    wn=x(ZeroPointFrequencyPoint(i));
+    Gzero=Gzero*tf([1 2*sigma2*wn wn^2],[1 2*sigma1*wn wn^2]);
+    Gp_temp=Gp_Practical_notch*Gzero;
+    [mag,phase,wout]=bode(Gp_temp,x);
+    y_temp=mag(:);
+end
+
+figure(9)
+subplot(2,1,1)
+loglog(x,y_ideal);
+grid on
+xlim([2*pi*FreLimMin,2*pi*FreLimMax]);
+hold on
+loglog(x,y_practical_notch);
+loglog(x,y_temp);
+plot(x(ZeroPointFrequencyPoint),y_practical_notch(ZeroPointFrequencyPoint),'r.','MarkerSize',12)
+plot(x(ZeroPointFrequencyPoint),y_temp(ZeroPointFrequencyPoint),'b.','MarkerSize',12)
+hold off
+subplot(2,1,2)
+bode(Gzero,op)
+grid on
+xlim([FreLimMin,FreLimMax]);
+
+
+sum=Curved_Surface_Integral_Forward_abs(log10(x),log10(y_practical),log10(y_ideal));
+fprintf('Notchapllied-Ideal area(Abs) is %f\n',sum);
+sum=Curved_Surface_Integral_Forward_OnlyPositive(log10(x),log10(y_practical),log10(y_ideal));
+fprintf('Notchapllied-Ideal area(Only+) is %f\n',sum);
+sum=Curved_Surface_Integral_Forward_OnlyNegtive(log10(x),log10(y_practical),log10(y_ideal));
+fprintf('Notchapllied-Ideal area(Only-) is %f\n',sum);
+sum=Curved_Surface_Integral_Square_Forward_abs(log10(x),log10(y_practical),log10(y_ideal));
+fprintf('Notchapllied-Ideal Square area(Abs) is %f\n',sum);
+sum=Curved_Surface_Integral_Square_Forward_OnlyPositive(log10(x),log10(y_practical),log10(y_ideal));
+fprintf('Notchapllied-Ideal Square area(Only+) is %f\n',sum);
+sum=Curved_Surface_Integral_Square_Forward_OnlyNegtive(log10(x),log10(y_practical),log10(y_ideal));
+fprintf('Notchapllied-Ideal Square area(Only-) is %f\n',sum);
+
+
+
+
+function [sum]=Curved_Surface_Integral_Forward_abs(x,y1,y2)
+    Diff_y=abs(y1-y2);
+    num=size(x);
+    sum=0;
+    for i = 1:num-1
+        sum=sum+(Diff_y(i+1)+Diff_y(i))/2*(x(i+1)-x(i));
+    end
+end
+
+function [sum]=Curved_Surface_Integral_Forward_OnlyPositive(x,y1,y2)
+    Diff_y=y1-y2;
+    num=size(x);
+    sum=0;
+    for i = 1:num-1
+        if(Diff_y(i)>0 && Diff_y(i+1)>0)
+            sum=sum+(Diff_y(i+1)+Diff_y(i))/2*(x(i+1)-x(i));
+        end
+    end
+end
+
+function [sum]=Curved_Surface_Integral_Forward_OnlyNegtive(x,y1,y2)
+    Diff_y=y1-y2;
+    num=size(x);
+    sum=0;
+    for i = 1:num-1
+        if(Diff_y(i)<0 && Diff_y(i+1)<0)
+            sum=sum+(-1)*(Diff_y(i+1)+Diff_y(i))/2*(x(i+1)-x(i));
+        end
+    end
+end
+
+function [sum]=Curved_Surface_Integral_Square_Forward_abs(x,y1,y2)
+    Diff_y=abs(y1-y2);
+    num=size(x);
+    sum=0;
+    for i = 1:num-1
+        sum=sum+(Diff_y(i+1)+Diff_y(i))^2/2*(x(i+1)-x(i));
+    end
+end
+
+function [sum]=Curved_Surface_Integral_Square_Forward_OnlyPositive(x,y1,y2)
+    Diff_y=y1-y2;
+    num=size(x);
+    sum=0;
+    for i = 1:num-1
+        if(Diff_y(i)>0 && Diff_y(i+1)>0)
+            sum=sum+(Diff_y(i+1)+Diff_y(i))^2/2*(x(i+1)-x(i));
+        end
+    end
+end
+
+function [sum]=Curved_Surface_Integral_Square_Forward_OnlyNegtive(x,y1,y2)
+    Diff_y=y1-y2;
+    num=size(x);
+    sum=0;
+    for i = 1:num-1
+        if(Diff_y(i)<0 && Diff_y(i+1)<0)
+            sum=sum+(Diff_y(i+1)+Diff_y(i))^2/2*(x(i+1)-x(i));
+        end
+    end
+end
